@@ -1,0 +1,16 @@
+development:
+  application_key: elSnp9E1v79qc6zf
+  username: richardlonesteen@gmail.com
+  password: piratas12
+  login_url: https://identitysso.betfair.com/api/certlogin
+  api_url: https://api-ng.betstores.com/betting/betfair/services/api.betfair.com/exchange/betting/json-rpc/v1
+  keep_alive_url: https://identitysso.betfair.com/api/keepAlive
+  go_localuser: rdlonesteen
+  go_filename: betfair
+
+production:
+  application_key: YOUR_APP_KEY
+  username: YOUR_ACCOUNT_USERNAME
+  password: YOUR_ACCOUNT_PASSWORD
+  go_localuser: YOURUSERNAME
+  go_filename: betfair
