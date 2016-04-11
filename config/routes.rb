@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	    	resources :players
 	    	mount_devise_token_auth_for 'User', at: 'auth'
 	      resources :users
+        resources :event_types
 	    end
 	  end
 end
