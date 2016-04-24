@@ -1,4 +1,4 @@
-class CreateRanks < ActiveRecord::Migration[5.0]
+class CreateRanks < ActiveRecord::Migration
   def change
     create_table :ranks do |t|
       t.date :ranking_date
