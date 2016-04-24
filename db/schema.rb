@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424161617) do
+ActiveRecord::Schema.define(version: 20160424180220) do
 
   create_table "matches", force: :cascade do |t|
     t.date     "date"
@@ -71,6 +71,65 @@ ActiveRecord::Schema.define(version: 20160424161617) do
     t.string   "country",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "player_1_id",        limit: 4
+    t.integer  "player_2_id",        limit: 4
+    t.integer  "pt",                 limit: 4
+    t.integer  "set1",               limit: 4
+    t.integer  "set2",               limit: 4
+    t.integer  "gm1",                limit: 4
+    t.integer  "gm2",                limit: 4
+    t.string   "pts",                limit: 255
+    t.integer  "gm",                 limit: 4
+    t.integer  "tbset",              limit: 4
+    t.integer  "tb",                 limit: 4
+    t.integer  "tbpt",               limit: 4
+    t.integer  "svr",                limit: 4
+    t.string   "second_no_let",      limit: 255
+    t.string   "second_sv",          limit: 255
+    t.string   "first_sv",           limit: 255
+    t.string   "first_no_sv",        limit: 255
+    t.string   "second_no_sv",       limit: 255
+    t.string   "is_rally_first",     limit: 255
+    t.string   "is_rally_second",    limit: 255
+    t.string   "sv_first",           limit: 255
+    t.string   "sv_second",          limit: 255
+    t.string   "rally",              limit: 255
+    t.string   "is_ace",             limit: 255
+    t.string   "is_Unret",           limit: 255
+    t.string   "is_rally_winner",    limit: 255
+    t.string   "is_forced",          limit: 255
+    t.string   "is_unforced",        limit: 255
+    t.string   "is_double",          limit: 255
+    t.string   "rally_no_spec",      limit: 255
+    t.string   "rally_no_error",     limit: 255
+    t.string   "rally_no_direction", limit: 255
+    t.string   "rally_len",          limit: 255
+    t.string   "pt_winner",          limit: 255
+    t.string   "is_svr_winner",      limit: 255
+    t.string   "pts_after",          limit: 255
+    t.integer  "gm_w",               limit: 4
+    t.integer  "gm_1",               limit: 4
+    t.integer  "gm_2",               limit: 4
+    t.integer  "set_w",              limit: 4
+    t.integer  "set1a",              limit: 4
+    t.integer  "set2a",              limit: 4
+    t.integer  "rev_tb",             limit: 4
+    t.integer  "tb_rev",             limit: 4
+    t.integer  "rally_count",        limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "ret",                limit: 4
+    t.integer  "serving",            limit: 4
+    t.string   "first",              limit: 255
+    t.string   "second",             limit: 255
+    t.text     "notes",              limit: 65535
+    t.string   "first_no_let",       limit: 255
+    t.string   "first_in",           limit: 255
+    t.string   "second_in",          limit: 255
   end
 
   create_table "ranks", force: :cascade do |t|
