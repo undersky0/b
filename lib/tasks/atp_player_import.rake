@@ -36,7 +36,7 @@ end
 task :match_overview => :environment do
 lost = []
 
-
+ID = 0
 #20120219-M-Rotterdam-F-Roger_Federer-Juan_Martin_Del_Potro,2,2,29,4,0,17,12,12,7,3,2,39,14,9,3,1,12,8,4
 # match_id,player,set,serve_pts,aces,dfs,first_in,first_won,second_in,second_won,bk_pts,bp_saved,return_pts,
 # return_pts_won,winners,winners_fh,winners_bh,unforced,unforced_fh,unforced_bh
@@ -45,18 +45,19 @@ lost = []
 CSV.foreach("#{Rails.root}/match_data/charting-m-stats-Overview.csv", encoding:'iso-8859-1:utf-8') do |row|
 	full_name_1 = row[ID].gsub("-", " ").split(" ").last(2).first.gsub("_", " ")
 	full_name_2 = row[ID].gsub("-", " ").split(" ").last.gsub("_", " ")
-	player_1 = Player.where("full_name LIKE ?", "%#{full_name_1}%").first.try(:id)
-	player_2 = Player.where("full_name LIKE ?", "%#{full_name_2}%").first.try(:id)
-	if player_1.nil? || player_2.nil?
-		lost << row[ID]
-		next
-	end
+	puts full_name_1
+	puts full_name_2
+	player_1 = Player.where("full_name LIKE ?", "%#{full_name_1}%").first
+	player_2 = Player.where("full_name LIKE ?", "%#{full_name_2}%").first
+	next if player_1.nil? || player_2.nil?
+
 	date = row[ID].delete(" ").first(8).to_date.to_s
-	Overview.create(
+	row[1].to_i.equal?(1) ? p = player_1 : p = player_2
+
+	p.overviews.create(
 		date: date,
 		match_id: row[ID],
-		player:  row[1],
-		player_id: row[1] == 1 ? player_1 : player_2,
+		player: row[1],
 		set: row[2],
 		serve_pts: row[3],
 		aces: row[4],

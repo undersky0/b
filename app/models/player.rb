@@ -1,4 +1,7 @@
 class Player < ApplicationRecord
+
+	has_many :overviews, :foreign_key => :player_id
+
 	require 'Prime'
 	require 'Matrix'
 
