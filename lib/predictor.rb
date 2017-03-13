@@ -38,18 +38,25 @@
 
 class Predictor
   #get relevant overviews of similar calibre players
-  def initialize(p1, p2)
-    @p1 = Player.find_by_id p1
-    @p2 = Player.find_by_id p2
-    @p1_all_overviews = Overview.where(match_id:@p1.overviews.pluck(:match_id)).joins(:player).where("player_id != ? AND players.lrank BETWEEN 1 AND 100", @p1.id)
-    @p2_all_overviews = Overview.where(match_id:@p2.overviews.pluck(:match_id)).joins(:player).where("player_id != ? AND players.lrank BETWEEN 1 AND 100 ", @p1.id)
-    @p1_relevant_overviews
+  def initialize(player1, player2)
+    @p1 = Player.find_by_id played1
+    @player2 = Player.find_by_id player2
+    @played1_all_overviews = Overview.where(match_id:@played1.overviews.pluck(:match_id)).joins(:player)
+    .where("player_id != ? AND players.lrank BETWEEN 1 AND 100 AND date > #{1.year.ago}", @played1.id)
+    @player2_all_overviews = Overview.where(match_id:@player2.overviews.pluck(:match_id)).joins(:player)
+    .where("player_id != ? AND players.lrank BETWEEN 1 AND 100 AND data > #{1.year.ago}", @played1.id)
     @fi = nil
   end
 
   def points_won_on_serve_1
-    a = @p1_overview.where(set:1).pluck(:serve_pts)
-    b = @p2_overview.where(set:1).pluck(:serve_pts)
+    a = @played1_all_overview.where(set:1).pluck(:serve_pts)
+    b = @player2_all_overview.where(set:1).pluck(:serve_pts)
+    a,b
+  end
+
+  def points_won_on_serve_2
+    a = @played1_all_overview.where(set:2).pluck(:serve_pts)
+    b = @player2_all_overview.where(set:2).pluck(:serve_pts)
     a,b
   end
 

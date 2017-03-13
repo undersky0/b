@@ -2,8 +2,8 @@ class CreatePoints < ActiveRecord::Migration
   def change
     create_table :points do |t|
       t.date :date
-      t.integer :player_1_id
-      t.integer :player_2_id
+      t.integer :player_1_id, references: :player
+      t.integer :player_2_id, references: :player
       t.integer :pt
       t.integer :set1
       t.integer :set2

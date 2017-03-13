@@ -25,8 +25,10 @@ gem 'betfair_api_ng_rails', github: 'alterego-labs/betfair_api_ng_rails'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-
+gem 'rb-readline'
 gem "figaro"
+#MS
+gem 'liblinear-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

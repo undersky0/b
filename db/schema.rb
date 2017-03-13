@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424180220) do
+ActiveRecord::Schema.define(version: 20170312165507) do
 
   create_table "matches", force: :cascade do |t|
     t.date     "date"
@@ -130,7 +130,12 @@ ActiveRecord::Schema.define(version: 20160424180220) do
     t.string   "first_no_let",       limit: 255
     t.string   "first_in",           limit: 255
     t.string   "second_in",          limit: 255
+    t.integer  "player_1_id_id",     limit: 4
+    t.integer  "player_2_id_id",     limit: 4
   end
+
+  add_index "points", ["player_1_id_id"], name: "index_points_on_player_1_id_id", using: :btree
+  add_index "points", ["player_2_id_id"], name: "index_points_on_player_2_id_id", using: :btree
 
   create_table "ranks", force: :cascade do |t|
     t.date     "ranking_date"

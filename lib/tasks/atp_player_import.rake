@@ -14,7 +14,8 @@ task :import_atp_players => :environment do
 		dob = row[DOB].try(:to_date) rescue nil 
 		next if row[FIRST_NAME].nil?
 		next if row[LAST_NAME].nil?
-		Player.create(pid: row[PID], first_name: row[FIRST_NAME].encode('utf-8', 'binary', invalid: :replace, undef: :replace, replace: ''), last_name: row[LAST_NAME].encode('utf-8', 'binary', invalid: :replace, undef: :replace, replace: ''), 
+		Player.create(pid: row[PID], 
+			first_name: row[FIRST_NAME].encode('utf-8', 'binary', invalid::replace, undef: :replace, replace: ''), last_name: row[LAST_NAME].encode('utf-8', 'binary', invalid: :replace, undef: :replace, replace: ''), 
 			hand: row[HAND], dob:dob, country:row[COUNTRY])
 	end
 end
